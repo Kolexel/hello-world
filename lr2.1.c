@@ -11,7 +11,15 @@ double factorial(int n) {
 int main() {
     double E;
     printf("Введите значение E: ");
-    scanf("%lf", &E);
+    if (scanf("%lf", &E) != 1) {
+        printf("Ошибка: введите правильное число для E.\n");
+        return 1;
+    }
+
+    if (E <= 0) {
+        printf("Погрешность должна быть больше 0\n");
+        return 1;
+    }
 
     double SumCurrent = 0.0;
     double SumPrevious = 0.0;
