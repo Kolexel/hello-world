@@ -72,19 +72,3 @@ int main() {
     printf("Сумма ряда: %.10f\n", SumCurrent);
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
