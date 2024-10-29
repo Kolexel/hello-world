@@ -7,7 +7,7 @@ double Ln(double x) {
     double term = x;
     int n = 1;
 
-    while (fabs(term)) {
+    while (fabs(term) > 1e-10) {
         result += term / n;
         n++;
         term *= x * x;
@@ -29,20 +29,32 @@ double LeftRectangle(double a, double b, int n) {
 
 int main() {
     double a, b, E;
+    
     printf("Введите a: ");
-    scanf("%lf", &a);
+    if (scanf("%lf", &a) != 1) {
+        printf("Ошибка: введите правильное число для a.\n");
+        return 1;
+    }
+    
     printf("Введите b: ");
-    scanf("%lf", &b);
+    if (scanf("%lf", &b) != 1) {
+        printf("Ошибка: введите правильное число для b.\n");
+        return 1;
+    }
+    
     printf("Введите значение E: ");
-    scanf("%lf", &E);
-
-    if(a>=b) {
-        printf("Ошибка, a должно быть меньше b");
+    if (scanf("%lf", &E) != 1) {
+        printf("Ошибка: введите правильное число для E.\n");
+        return 1;
+    }
+    
+    if (a >= b) {
+        printf("Ошибка, a должно быть меньше b\n");
         return 1;
     }
 
-    if(E<=0) {
-        printf("Погрешность должна быть меньше 0");
+    if (E <= 0) {
+        printf("Погрешность должна быть больше 0\n");
         return 1;
     }
 
@@ -54,7 +66,7 @@ int main() {
         SumPrevious = SumCurrent;
         SumCurrent = LeftRectangle(a, b, i);
 
-        i++; 
+        i++;
     } while (fabs(SumCurrent - SumPrevious) >= E);
 
     printf("Сумма ряда: %.10f\n", SumCurrent);
