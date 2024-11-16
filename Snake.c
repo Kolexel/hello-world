@@ -160,6 +160,7 @@ int main(int argc, char *argv[]) {
         Logic();
         Sleep(speed); // Задержка
     }
+    printf("\n");
     printf("Game Over\n"); // Сообщение об окончании игры
     return 0;
 }
